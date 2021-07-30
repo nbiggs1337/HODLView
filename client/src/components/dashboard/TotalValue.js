@@ -22,6 +22,7 @@ const Budget = (props) => {
   const [AllAssets, setAllAssets ] = useState(null)
   const [MyAssets, setMyAssets] = useState([]);
   
+  //API pulls for asset data & auth-ing logged in user. 
   useEffect(() => {
     axios.get('https://api.lunarcrush.com/v2?data=market&key=gtbtvifwrx9ooca9r4dlti&sort=mc&desc=true')
       .then(res => {
@@ -46,7 +47,9 @@ const Budget = (props) => {
       
   }, [])
   
-  const myAsset = () =>  { //Fetches and calucates my asset total current value of signed in LUser.
+  
+  //Fetches and calucates my asset total current value of signed in LUser.
+  const myAsset = () =>  { 
     var total = 0;
       // console.log(LUser)
       for ( const [i, crypto] of LUser.cryptos.entries() ){
@@ -61,7 +64,8 @@ const Budget = (props) => {
     return (total.toFixed(2))
   } //Returns total asset value USD.
   
-  const myPCDay = () => { //Calculates total portfolio % change over 24hrs.
+  //Calculates total portfolio % change over 24hrs.
+  const myPCDay = () => { 
     var total = 0;
     var count = 0;
     for ( const [i, crypto] of LUser.cryptos.entries() ){

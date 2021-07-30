@@ -43,7 +43,8 @@ const TotalProfit = (props) => {
       
   }, [])
   
-  const myAsset = () =>  { //Fetches and calucates my asset total current value of signed in LUser.
+  //Fetches and calucates my asset total current value of signed in LUser.
+  const myAsset = () =>  { 
     var total = 0;
       // console.log(LUser)
       for ( const [i, crypto] of LUser.cryptos.entries() ){

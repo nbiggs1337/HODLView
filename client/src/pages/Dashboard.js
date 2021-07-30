@@ -10,7 +10,7 @@ import {
 import Budget from 'src/components/dashboard/TotalValue';
 // import LatestOrders from 'src/components/dashboard//LatestOrders';
 // import LatestProducts from 'src/components/dashboard//LatestProducts';
-import Sales from 'src/components/dashboard/Sales';
+import Sales from 'src/components/dashboard/SenimentChart';
 import TasksProgress from 'src/components/dashboard/TotalAssets';
 import TotalCustomers from 'src/components/dashboard/TotalCoins';
 import TotalProfit from 'src/components/dashboard//TotalProfit';

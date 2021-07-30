@@ -24,6 +24,8 @@ const PortfolioByCoins = (props) => {
   const [AllAssets, setAllAssets ] = useState(null)
   const [MyAssets, setMyAssets] = useState([]);
   
+  
+  //API pulls for asset data & auth-ing logged in user. 
   useEffect(() => {
     axios.get('https://api.lunarcrush.com/v2?data=market&key=gtbtvifwrx9ooca9r4dlti&sort=mc&desc=true')
       .then(res => {

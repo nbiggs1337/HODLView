@@ -18,6 +18,7 @@ const TasksProgress = (props) => {
   const navigate = useNavigate();
   const [LUser, setLUser] = useState(null);
   
+  //API pulls for auth-ing logged in user. 
   useEffect(() => {
     axios.get('http://localhost:8000/api/users/auth', { withCredentials: true })
       .then(res => {
@@ -35,7 +36,9 @@ const TasksProgress = (props) => {
       
   }, [])
   
-  const myAssetT = () =>  { //Fetches and calucates my asset total # count of signed in LUser.
+  
+  //Fetches and calucates my asset total # count of signed in LUser.
+  const myAssetT = () =>  { 
     var total = 0;
       // console.log(LUser)
       for ( const [i, crypto] of LUser.cryptos.entries() ){

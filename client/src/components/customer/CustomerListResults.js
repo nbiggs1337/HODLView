@@ -31,6 +31,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
   const [refresh, setRefresh ] = useState(false)  
 
 
+  //API pulls for asset data & auth-ing logged in user. 
   useEffect(() => {
     axios.get('https://api.lunarcrush.com/v2?data=market&key=gtbtvifwrx9ooca9r4dlti&sort=mc&desc=true')
       .then(res => {
@@ -54,6 +55,8 @@ const CustomerListResults = ({ customers, ...rest }) => {
       })
   }, [refresh])
   
+  
+  //Handles add asset, creates obj, sends to API, refreshes changes on page.
   const addHandler = (e) => {
     e.preventDefault();
     // console.log(e.target[1].value);
@@ -70,6 +73,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
       .catch(err => console.log(err))
   }
   
+  //Handles update asset, creates obj, sends to API, refreshes changes on page.
   const updateHandler = (e, asset) => {
     e.preventDefault();
     const updated = {
@@ -83,8 +87,8 @@ const CustomerListResults = ({ customers, ...rest }) => {
       .catch(err => console.log(err))
     ;
   }
-
-
+  
+  //Handles selecting asset rows, not currently in use
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
 
@@ -93,10 +97,11 @@ const CustomerListResults = ({ customers, ...rest }) => {
     } else {
       newSelectedCustomerIds = [];
     }
-
+    
     setSelectedCustomerIds(newSelectedCustomerIds);
   };
-
+  
+  //Handles selecting one user on hoverover. Changes background color
   const handleSelectOne = (event, id) => {
     const selectedIndex = selectedCustomerIds.indexOf(id);
     let newSelectedCustomerIds = [];
@@ -217,7 +222,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
                   </TableCell>
                   <TableCell>
                     {/* bag amount here */}
-                    {LUser.cryptos.filter((cryp) => cryp.coin === asset.s).length > 0 ? '$'+(LUser.cryptos.filter((cryp) => cryp.coin === asset.s)[0].amount * asset.p ).toFixed(2)+ ' USD' : "- -" }
+                    {LUser.cryptos ? LUser.cryptos.filter((cryp) => cryp.coin === asset.s).length > 0 ? '$'+(LUser.cryptos.filter((cryp) => cryp.coin === asset.s)[0].amount * asset.p ).toFixed(2)+ ' USD' : "- -" : '- - ' }
                   </TableCell>
                   
                   <TableCell>

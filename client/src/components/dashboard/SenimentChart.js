@@ -21,6 +21,8 @@ const Sales = (props) => {
   const [AllAssets, setAllAssets ] = useState(null)
   const [LUser, setLUser] = useState(null);
   
+  
+  //API pulls for asset data & auth-ing logged in user. 
   useEffect(() => {
     axios.get('https://api.lunarcrush.com/v2?data=market&key=gtbtvifwrx9ooca9r4dlti&sort=mc&desc=true')
       .then(res => {
@@ -45,6 +47,8 @@ const Sales = (props) => {
       
   }, [])
   
+  //Pulls data from LUser & API, creates array of arrays in order of 
+  //[ [ bull sentiment ], [ bear sentiment ], [ names/labels of coins ]]
   const getData = () => {
     let bull = [];
     let bear = [];
@@ -60,7 +64,7 @@ const Sales = (props) => {
   }
   
   
-  
+  //Data object, pulls data from function above, sets array[index] to correct value.
   const data = {
     datasets: [
       {
@@ -77,6 +81,8 @@ const Sales = (props) => {
     labels: LUser != null && AllAssets != null ? getData()[2] : []
   };
 
+  
+  //Sets params / display settings for chart to display
   const options = {
     animation: false,
     cornerRadius: 20,
